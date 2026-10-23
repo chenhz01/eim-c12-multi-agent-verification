@@ -1,0 +1,53 @@
+# P44 · agent-output-verifier
+
+> 机制簇：**多智能体验证 oracle** ｜ 家族：**EIM-1.0**（55 个涌现智能人工化机制之一）
+
+## 费曼三层
+
+**L0 · 这是什么（12 岁能懂）**
+几个 AI 各给一个答案，交叉比对，找出那个不对劲的。
+
+**L1 · 机制本质**
+多数投票得共识，偏离共识者为 outlier。
+
+**L2 · 怎么用上**
+verify(outputs) → (consensus, outliers)。
+
+## 30 秒跑起来
+
+```bash
+python impl.py        # 看 demo 输出
+python selftest.py    # 跑自检（含输出快照比对）
+```
+
+真实运行输出（本仓发布时快照，`golden_output.txt` 同内容）：
+
+```text
+[P44] ('42', ['41'])
+```
+
+## 什么时候该用 / 不该用
+
+| | 内容 |
+|---|---|
+| **该用** | 高价值、不可逆决策；单模型置信度不足、需要交叉验证的场合。 |
+| **不该用** | 低风险高频调用；延迟敏感的实时链路。 |
+| **常见误用** | 用同源模型的多实例冒充独立验证——共同盲区不会因为多开几个而消失。 |
+
+## 在这个家族里
+
+- 组合仓（55 个机制合集）：https://github.com/chenhz01/emergent-mechanisms
+- 同簇伙伴：`P45` oracle-compiler-bridge · `P46` consensus-fork-detector · `P47` role-isolation-tester
+- 本仓是 **P44 的独立署名锚**：可单独引用、单独开 issue、单独打星；实现与组合仓
+  `components/P44-agent-output-verifier/` 一致，修复会双向同步。
+
+## License
+
+**双许可**：
+
+- **代码**：Apache-2.0 — 见 [LICENSE](LICENSE)
+- **文档/规范**：CC BY 4.0 — 见 [LICENSE-SPEC](LICENSE-SPEC)
+
+对外声明「符合 / 兼容 / 通过 EIM-1.0」时须署名：
+`EIM-1.0 · P44 · agent-output-verifier © 2026 chenhz01, CC BY 4.0`
+未作上述声明者可自由使用、商用、闭源、改名，无需署名。详见 [NOTICE](NOTICE)。
